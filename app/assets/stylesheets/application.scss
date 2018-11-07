@@ -1,2 +1,29 @@
 @import "bootstrap";
 @import "fullcalendar";
+
+html {
+  height: 100%;
+}
+
+body { //TAKE OUT gradient-background from body and make it only appear in homepage ... 11-5-2018 12:13AM
+  font-size: 24px;
+  height: 100%;
+}
+
+.index-body {
+  background: rgb(39,206,147);
+  background: -moz-linear-gradient(180deg, rgba(39,206,147,1) 0%, rgba(0,135,119,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(39,206,147,1) 0%, rgba(0,135,119,1) 100%);
+  background: linear-gradient(180deg, rgba(39,206,147,1) 0%, rgba(0,135,119,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#27ce93",endColorstr="#008777",GradientType=1);
+  color: white;
+  height: 100%;
+}
+.w3-bar-item:hover, .w3-button:hover {
+  text-decoration: none;
+  background-color: white;
+}
+
+.w3-bar-item.w3-button.sign-up {
+  border: 1px solid white;
+}

@@ -5,6 +5,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  height: 100%;
 }
 
 p, ol, ul, td {
@@ -54,6 +55,10 @@ div {
   padding: 2px;
   background-color: red;
   display: table;
+}
+.w3-bar-item:hover, .w3-button:hover {
+  text-decoration: none;
+  background-color: white;
 }
 
 #error_explanation {
