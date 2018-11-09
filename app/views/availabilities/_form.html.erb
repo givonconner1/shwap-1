@@ -28,6 +28,15 @@
     <%= form.label :assigned %>
     <%= form.check_box :assigned %>
   </div>
+<div class="field">
+  <p>
+     Swap your shift? (choose an employee to take your shift)
+      <%= form.select :user_id, User.pluck(:email, :id) %>
+
+  </p>
+
+</div>
+
 
   <div class="actions">
     <%= form.submit %>
