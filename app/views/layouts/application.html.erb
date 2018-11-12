@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Shwap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,25 +12,23 @@
 
   <body>
     <% if user_signed_in? %>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-           <li><%= link_to "My Schedule", pages_dashboard_path %></li>
-
-    <% else %>
-      <div class="index-body">
-        <ul>
-         <a href="#" class="w3-bar-item w3-button " style="font-size: 36px;">Shwap</a>
-         <a href="#" class="w3-bar-item w3-button">Link 1</a>
-         <a href="#" class="w3-bar-item w3-button">Link 2</a>
-         <a href="#" class="w3-bar-item w3-button">Link 3</a>
-         <%= link_to "Login", new_user_session_path, :class => "w3-bar-item w3-button" %>
-         <%= link_to "Get Started", new_user_registration_path, :class => "w3-bar-item w3-button sign-up" %>
-        </ul>
-    <% end %>
-          
-      </index-body>
- 
+<div class="container">
+  <div class="w3-bar w3-border w3-light-grey">
+    <a href="/" class="w3-bar-item w3-button">Home</a>
+    <a href="#" class="w3-bar-item w3-button">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-right">Link 3</a>
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button">Hello, <%= current_user.email %>!</h1></button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-right">
+        <a href="#" class="w3-bar-item w3-button w3-right">Link 1</a>
+        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+      </div>
+    </div>
+  </div>
+</div>
+      <% end %>
     <%= yield %>
   </body>
 </html>
