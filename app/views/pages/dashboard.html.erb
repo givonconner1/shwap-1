@@ -13,6 +13,15 @@
   </thead>
 
   <tbody>
+    <% @conversations.each do |conversations| %>
+    <tr>
+      <td><%= message.current_user %></td>
+      <td><%= message.body %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+  <tbody>
     <% @availabilities.each do |availability| %>
       <tr>
         <td><%= availability.start_time %></td>
