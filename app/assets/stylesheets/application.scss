@@ -18,6 +18,35 @@
   font: Proza Libre !important;
 }
 
+.accept-btn {
+  background-color: #32CB97 !important;
+  color: #ffff !important;
+}
+
+.decline-btn {
+  background-color: #616161 !important;
+  color: #ffff !important;
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.accept-btn::hover {
+
+}
+
+.decline-btn:hover {
+  background-color: rgba(161, 161, 161, 0.6) !important
+}
+
 .promo-img-height {
   width: 160%;
 }
@@ -32,6 +61,20 @@
 
 .get-started {
   border: 1px solid white !important;
+}
+
+.calendar-padding {
+  padding: 5% 0 5% 0;
+}
+
+.legend-card {
+  background-color: #008777;
+  color: white;
+}
+
+.notification-card {
+  background-color: #008777;
+  color: white;
 }
 /* W3.CSS 4.12 Novemberr 2018 by Jan Egil and Borge Refsnes */
 html {

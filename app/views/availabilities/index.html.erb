@@ -1,7 +1,40 @@
 <% if user_signed_in? %>
 <p id="notice"></p>
 <div class="container">
-  <div id="calendar"></div>
+  <div class="w3-row">
+    <div class="w3-col w3-center" style="width: 60%">
+        <div id="calendar" class="calendar-padding"></div>
+      </div>
+    <div class="w3-col w3-right" style="width: 40%; padding: 7.5% 0 0 8%;">
+        <div class="w3-card-4" style="height: 15%;">
+          <header class="w3-container legend-card">
+            <h3 class="w3-center">Legend</h3>
+          </header>
+          <div class="w3-container" style="background-color: #F8F8F8;">
+            <div class="row">
+              <div class="w3-col s3 w3-green w3-panel w3-card"><p>w3-card</p></div>
+              <div class="w3-col s3 w3-dark-grey w3-panel w3-card"><p>w3-card</p></div>
+            </div>
+          </div>
+        </div><br>
+        <div class="w3-card-4" style="height: 15%;">
+          <header class="w3-container notification-card">
+            <h3 class="w3-center">Notifications</h3>
+          </header>
+          <div class="container" style="background-color: #F8F8F8;">
+            <div style="background-color: #DEDEDE; height: 100%; margin: 5% 0 5% 0;">
+              <p class="w3-right" style="margin-right: 5px;">x</p><br>
+              <p style="margin-left: 5px;">Coworker has requested their shift be taken on Oct. 2nd at 5:00pm. Would you like to accept?</p>
+              <div class="w3-center">
+                <button class="w3-button w3-round-large accept-btn" style="width: 40%;">Accept</button>
+                <button class="w3-round-large decline-btn" style="width: 40%;">Decline</button>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 <h1>Availabilities</h1>
   <table class="table table-striped">
