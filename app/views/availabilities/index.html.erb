@@ -18,11 +18,12 @@
         <td><%= availability.start_time %></td>
         <td><%= availability.end_time %></td>
         <td><%= availability.assigned %></td>
-            <td><%= availability.test_name %></td>
+            <td><%= availability.title %></td>
         <td><%= link_to 'Show', availability %></td>
         <td><%= link_to 'Edit', edit_availability_path(availability) %></td>
         <td><%= link_to 'Destroy', availability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    
     <% end %>
   </tbody>
 </table>
