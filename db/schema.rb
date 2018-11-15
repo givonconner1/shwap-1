@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_205808) do
+ActiveRecord::Schema.define(version: 2018_11_15_214548) do
 
   create_table "availabilities", force: :cascade do |t|
     t.datetime "start_time"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 2018_11_15_205808) do
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "availability_id"
   end
 
   create_table "users", force: :cascade do |t|

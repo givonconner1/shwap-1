@@ -10,6 +10,7 @@ class AvailabilitiesController < ApplicationController
   # GET /availabilities/1
   # GET /availabilities/1.json
   def show
+    @requests = @availability.requests
   end
 
   # GET /availabilities/new
@@ -71,6 +72,6 @@ class AvailabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params
-      params.require(:availability).permit(:start_time, :end_time, :assigned, :user_id, :test_name, :start, :end, :title)
+      params.require(:availability).permit(:start_time, :end_time, :assigned, :user_id, :test_name, :start, :end, :title, :request)
     end
 end

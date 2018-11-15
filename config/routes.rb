@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :events
   devise_for :users
-  resources :availabilities
+  resources :availabilities do
+    resources :requests 
+  end 
    root to: "availabilities#index"
   resources :conversations do
     resources :messages

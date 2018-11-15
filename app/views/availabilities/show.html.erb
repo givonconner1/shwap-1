@@ -15,5 +15,15 @@
   <%= @availability.assigned %>
 </p>
 
+<h1>
+  Shift Swap Notes:
+</h1>
+<% @requests.each do |request| %>
+
+  <%= request.comment %>
+
+<% end %>
+
+<%= link_to 'Swap this Shift!', new_availability_request_path(@availability) %><br>
 <%= link_to 'Edit', edit_availability_path(@availability) %> |
 <%= link_to 'Back', availabilities_path %>
