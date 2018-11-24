@@ -2,34 +2,97 @@
 <html>
   <head>
     <title>Shwap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/proza-libre" type="text/css"/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if user_signed_in? %>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-           <li><%= link_to "My Schedule", pages_dashboard_path %></li>
-
-    <% else %>
-      <div class="index-body">
-        <ul>
-         <a href="#" class="w3-bar-item w3-button " style="font-size: 36px;">Shwap</a>
-         <a href="#" class="w3-bar-item w3-button">Link 1</a>
-         <a href="#" class="w3-bar-item w3-button">Link 2</a>
-         <a href="#" class="w3-bar-item w3-button">Link 3</a>
-         <%= link_to "Login", new_user_session_path, :class => "w3-bar-item w3-button" %>
-         <%= link_to "Get Started", new_user_registration_path, :class => "w3-bar-item w3-button sign-up" %>
-        </ul>
-    <% end %>
-          
-      </index-body>
- 
+<div class="container">
+  <div class="w3-bar w3-border w3-light-grey">
+    <a href="/" class="w3-bar-item w3-button">Home</a>
+    <a href="/pages/messages" class="w3-bar-item w3-button">Messages</a>
+    <a href="/pages/exchange-shifts" class="w3-bar-item w3-button">Exchange Shifts</a>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-right" %>
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button">Hello, <%= current_user.email %>!</h1></button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-right">
+        <a href="#" class="w3-bar-item w3-button w3-right">My Profile</a>
+        <a href="#" class="w3-bar-item w3-button">Settings</a>
+        <a href="#" class="w3-bar-item w3-button">Privacy</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <% else %>
+   <div id="landing-page">
+     <div class="row">
+        <div class="w3-col s9">
+        <a href="/availabilities" class="w3-bar-item w3-button nav-padding-left" style="font-size: 36px;">Shwap</a>
+        <a href="#" class="w3-bar-item w3-button nav-padding-left">Contact</a>
+        <a href="#" class="w3-bar-item w3-button nav-padding-left">About</a>
+        <a href="#" class="w3-bar-item w3-button nav-padding-left">Our Partners</a>       
+        </div>
+        <div class="w3-col s3">
+          <button onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button w3-left nav-padding-right"><%= link_to "Login" %></button>
+          <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+              <div class="w3-center"><br>
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+              </div>
+              <form class="w3-container" action="<%= new_user_session_path %>">
+                <div class="w3-section">
+                  <label><b>Username</b></label>
+                  <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                  <label><b>Password</b></label>
+                  <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                  <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+                  <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+                </div>
+              </form>
+              <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+              </div>
+            </div>
+          </div>
+           <%= link_to "Get Started", new_user_registration_path, :class => "w3-bar-item w3-button w3-left nav-padding-right get-started" %>
+        </div>
+     </div>
+   <div class="w3-container">
+    <div class="w3-display-container" style="height:600px;">
+      <div class="w3-display-bottomleft w3-padding w3-col s9">
+        <div>
+          <h2>Exchange Employee Shifts With Shwap’s Latest <br>Scheduling Tools</h2><br>
+          <ul>
+            <li><p>Create schedules 75% faster</p></li>
+            <li><p>Swap and pick up shifts</p></li>
+            <li><p>Request and approve time off</p></li>
+            <li><p>Stay connected with your employees</p></li>
+          </ul><br>
+        </div>
+        <div>
+          <h2>Help Managers Take Control of Employee<br> Schedules</h2><br>
+          <a href="#" class="w3-block landing-btn w3-padding-large" style="width:50%"><h3>Learn More</h3></a>
+        </div>
+      </div>
+        <div class=" w3-display-bottomright w3-col s3" style="margin-right: 25%;"><%= image_tag("phone-image.png", :class => "promo-img-height")%> </div>
+    </div>   
+   </div>
+ </div>
+      <% end %>
     <%= yield %>
   </body>
 </html>
+
+<script>
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+}
+</script>
