@@ -2,10 +2,15 @@
 <p id="notice"></p>
 <div class="container">
   <div class="w3-row">
-    <div class="w3-col w3-center" style="width: 60%">
+    <div class="w3-col" style="width: 60%">
+      <h2 style="margin-top: 5%;"><%= current_user.email %>'s Schedule</h2><br>
+      <div class="meter">
+        <div id="hours-meter" style="height:24px;width:5%">Hours hellllo</div>
+      </div>
+      <button class="w3-button w3-light-grey" onclick="move()">Click Me</button>
         <div id="calendar" class="calendar-padding"></div>
       </div>
-    <div class="w3-col w3-right" style="width: 40%; padding: 7.5% 0 0 8%;">
+    <div class="w3-col w3-right" style="width: 40%; padding: 7.5% 0 0 8%; margin-top: 15%;">
         <div class="w3-card-4" style="height: 15%;">
           <header class="w3-container legend-card">
             <h3 class="w3-center">Legend</h3>
@@ -68,6 +73,21 @@
 <% else %>
 <% end %>
 <script>
+
+function move() {
+    var elem = document.getElementById("hours-meter"); 
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
+  
 $('#calendar').fullCalendar({ 
    events: '/availabilities.json'
 });

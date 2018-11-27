@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   resources :availabilities do
   resources :requests
   end
-
-  get 'layouts/dashboard'
+ 
+  root to: "availabilities#index"
+  resources :conversations do
+  resources :messages
+  end
+  get 'layouts/application'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/pages/:page" => "pages#schedules"
   get "/pages/:page" => "pages#shift-exchange"

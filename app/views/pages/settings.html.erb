@@ -1,0 +1,19 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="w3-container">
+    <p>My Settings</p>
+    <div class="w3-col w3-center personal" style="width:25%; height: 100%;"><p>25%</p>
+      <div class="w3-border-bottom">
+        <svg height="100" width="100">
+          <circle cx="50" cy="50" r="40"fill="#57ED5D" />
+        </svg>
+        <h3>Johnson Doe</h3>
+      </div>
+      <div class="container">
+        <p class="w3-left"><%= current_user.email %></p>
+        <%= link_to "Change your password", edit_user_registration_path, class: "w3-left" %>
+      </div>
+    </div>
+    <div class="w3-col w3-center w3-dark-grey w3-container" style="width:75%"><p>75%</p></div>
+  </div>
+</div>
