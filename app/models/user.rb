@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   has_many :availabilities
    has_many :conversations, :foreign_key => :sender_id
+  has_many :requests
 end

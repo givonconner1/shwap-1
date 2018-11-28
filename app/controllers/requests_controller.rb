@@ -26,6 +26,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.availability_id = @availability.id
+	
     respond_to do |format|
       if @request.save
         format.html { redirect_to @availability, notice: 'Request was successfully created.' }
@@ -73,6 +74,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:comment, :availability_id)
+      params.require(:request).permit(:comment, :availability_id, :user_id)
     end
 end
