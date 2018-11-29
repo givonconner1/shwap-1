@@ -55,8 +55,8 @@
   <tbody>
     <% @availabilities.each do |availability| %>
       <tr>
-        <td><%= availability.start_time %></td>
-        <td><%= availability.end_time %></td>
+        <td><%= availability.start_time.strftime("%B %d, %Y, %l:%M %p") %></td>
+        <td><%= availability.end_time.strftime("%B %d, %Y, %l:%M %p") %></td>
         <td><%= availability.assigned %></td>
             <td><%= availability.title %></td>
         <td><%= link_to 'Show', availability %></td>

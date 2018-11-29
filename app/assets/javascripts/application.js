@@ -17,9 +17,12 @@
 //= require moment 
 //= require fullcalendar
 //= require fullcalendar/locale-all
+//= require bootstrap-datetimepicker
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
 
 function eventCalendar() {
   return $('#calendar').fullCalendar({ });
@@ -33,4 +36,3 @@ $(document).on('turbolinks:load', function(){
   eventCalendar();  
 });
 $(document).on('turbolinks:before-cache', clearCalendar);
-

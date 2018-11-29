@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= current_user.email %>'s Availabilities</h1>
+        <div id="calendar" class="calendar-padding"></div>
+
 
 <table>
   <thead>
@@ -30,4 +32,8 @@
 <br>
 
 <%= link_to 'New Availability', new_availability_path %>
-
+<script>
+$('#calendar').fullCalendar({ 
+   events: '/availabilities.json'
+});
+</script>

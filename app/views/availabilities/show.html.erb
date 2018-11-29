@@ -1,34 +1,61 @@
-
-
+<div class="container">
+  
 <p id="notice"><%= notice %></p>
-
+ <div class="row">
+   <div class="col-md-7">
+       
+      <h1><%= @availability.user.email %>'s Shift Details</h1>
+  
 <p>
   <strong>Start time:</strong>
-  <%= @availability.start_time %>
+  <%= @availability.start_time.strftime("%B %d, %Y, %l:%M %p") %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @availability.end_time %>
+  <%= @availability.end_time.strftime("%B %d, %Y, %l:%M %p") %>
 </p>
 
 <p>
   <strong>Assigned:</strong>
   <%= @availability.assigned %>
 </p>
+              <%= link_to 'Swap this Shift!', new_availability_request_path(@availability), class: 'w3-button w3-round accept-btn' %>
 
-<h1>
-  Swap Request Notes:
-</h1>
-<% @requests.each do |request| %>
 
-<h5>
-  <%= request.user_id %>
-  <%= request.comment %>
-<% end %>
-</h5>
-
+   </div><!--/col-md-7-->
+   <div class="col-md-5">
+      <h2>
+       <%= @availability.user.email %>'s Active Requests
+      </h2>
+     <% if @request.blank? %>
+          <% @requests.each do |request| %>
+          <table class="table table-striped">
+            <thead>
+              <th>Requested Person</th>
+              <th>Shift Swap Request Details</th>
+            </thead>
+            <tbody>
+              <tr>
+              <td>
+               <%= request.user_id %>
+              </td>
+                <td><%= request.comment %></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <% end %>
+        <% else %>
+     <h1>
+       You do not have any active shift requests. YOu have to work!
+     </h1>
+    <% end %>
 <br>
-<%= link_to 'Swap this Shift!', new_availability_request_path(@availability) %><br>
+   </div><!--/col-md-5-->
+
 <%= link_to 'Edit', edit_availability_path(@availability) %> |
 <%= link_to 'Back', availabilities_path %>
+  
+  </div><!--/row-->
+</div><!--/container-->

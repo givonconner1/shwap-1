@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :availabilities do
   resources :requests
   end
- 
+     get 'pages/dashboard'
+
+
   root to: "availabilities#index"
   resources :conversations do
   resources :messages

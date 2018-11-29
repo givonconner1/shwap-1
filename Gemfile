@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'fullcalendar-rails'
 
 gem 'momentjs-rails'
+gem 'bootstrap-datetimepicker-rails'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby

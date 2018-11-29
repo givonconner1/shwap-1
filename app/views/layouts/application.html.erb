@@ -16,7 +16,7 @@
   <div class="w3-bar w3-border main-navbar">
     <a href="/availabilities" class="w3-bar-item w3-button">Home</a>
     <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button" %>
-    <a href="/pages/exchange-shifts" class="w3-bar-item w3-button">Exchange Shifts</a>
+    <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-right" %>
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button">Hello, <%= current_user.email %>!</h1></button>
