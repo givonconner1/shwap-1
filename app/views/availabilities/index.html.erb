@@ -8,7 +8,27 @@
         <div id="hours-meter" style="height:24px;width:5%">Hours hellllo</div>
       </div>
       <button class="w3-button w3-light-grey" onclick="move()">Click Me</button>
-        <div id="calendar" class="calendar-padding"></div>
+        <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
+  <%= date.to_formatted_s(:short) %>
+  <% availabilities.each do |availability| %>
+    <% if availability.status == 'Confirmed' %>
+     <%= link_to availability do %>
+
+      <p class = "confirmed">
+        <%= availability.title %><br>
+         <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+      </p>
+      <% end %>
+       <% elsif availability.status == 'Pending' %>
+          <%= link_to availability do %>
+
+          <p class="pending">
+            <%= availability.title %></p>
+       <% end %>
+      <% end %>
+<% end %>
+<% end %>
       </div>
     <div class="w3-col w3-right" style="width: 40%; padding: 7.5% 0 0 8%; margin-top: 15%;">
         <div class="w3-card-4" style="height: 15%;">
@@ -69,6 +89,8 @@
 </table>
 <br>
 
+
+
 <%= link_to 'New Availability', new_availability_path %>
 <% else %>
 <% end %>
@@ -90,5 +112,6 @@ function move() {
   
 $('#calendar').fullCalendar({ 
    events: '/availabilities.json'
+  
 });
 </script>

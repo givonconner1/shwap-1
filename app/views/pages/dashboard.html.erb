@@ -1,7 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= current_user.email %>'s Availabilities</h1>
-        <div id="calendar" class="calendar-padding"></div>
+        <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
+  <%= date.to_formatted_s(:short) %>
+  <% availabilities.each do |availability| %>
+    <% if availability.status == 'Confirmed' %>
+          <%= link_to availability do %>
+            <p class = "confirmed">
+              <%= availability.title %></p>
+           <% end %>
+       <% elsif availability.status == 'Pending' %>
+          <%= link_to availability do %>
+
+
+          <p class="pending">
+            <%= availability.title %></p>
+        <% end %>
+        <% else %>
+          <%= link_to availability do %>
+
+
+          <p class="not-assigned">
+            <%= availability.title %></p>
+        <% end %>
+      <% end %>
+<% end %>
+<% end %>
 
 
 <table>

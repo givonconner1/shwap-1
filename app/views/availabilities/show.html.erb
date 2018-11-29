@@ -5,7 +5,9 @@
    <div class="col-md-7">
        
       <h1><%= @availability.user.email %>'s Shift Details</h1>
-  
+    <h3>
+      Shift Status: <%= @availability.status %>
+     </h3>
 <p>
   <strong>Start time:</strong>
   <%= @availability.start_time.strftime("%B %d, %Y, %l:%M %p") %>
@@ -34,6 +36,8 @@
             <thead>
               <th>Requested Person</th>
               <th>Shift Swap Request Details</th>
+              <th>Person who is taking your shift</th>
+              <th>Status</th>
             </thead>
             <tbody>
               <tr>
@@ -41,6 +45,8 @@
                <%= request.user_id %>
               </td>
                 <td><%= request.comment %></td>
+                <td><%= @availability.title %></td>
+                 <td><%= @availability.status %></td>
               </tr>
             </tbody>
           </table>
@@ -53,9 +59,10 @@
     <% end %>
 <br>
    </div><!--/col-md-5-->
+ <% if current_user.try(:admin) %>
+    <%= link_to 'Change Shift Details', edit_availability_path(@availability), class: 'w3-btn w3-round' %>
+  <% end %>
 
-<%= link_to 'Edit', edit_availability_path(@availability) %> |
-<%= link_to 'Back', availabilities_path %>
   
   </div><!--/row-->
 </div><!--/container-->

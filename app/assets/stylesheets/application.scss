@@ -1,6 +1,19 @@
 @import "bootstrap";
 @import "fullcalendar";
 @import 'bootstrap-datetimepicker';
+@import 'simple_calendar';
+.confirmed {
+  background: green;
+  padding: 10px;
+}
+.pending {
+  background: yellow;
+  padding: 10px;
+}
+.not-assigned {
+   background: red;
+  padding: 10px;
+}
 #landing-page {
   background: rgb(39,206,147);
   background: -moz-linear-gradient(180deg, rgba(39,206,147,1) 0%, rgba(0,135,119,1) 100%);

@@ -94,6 +94,8 @@ function myFunction() {
 
       <%= form.select :user_id, User.pluck(:id) %>
 
+          <%= form.hidden_field :status, value: "Pending" %> <!-- this is for user to automatically be assigned to an availbaility.-->
+
 
 
   <div class="field">

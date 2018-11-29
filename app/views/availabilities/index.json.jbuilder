@@ -1,5 +1,5 @@
 json.array!(@availabilities) do |availability|
-if availability.assigned.present?
+if availability.status = "Confirmed"
   json.extract! availability, :id, :test_name, :title, :assigned
   json.start availability.start_time
   json.end availability.end_time

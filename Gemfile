@@ -24,6 +24,7 @@ gem 'fullcalendar-rails'
 
 gem 'momentjs-rails'
 gem 'bootstrap-datetimepicker-rails'
+gem "simple_calendar", "~> 2.0"
 
 
 # See https://github.com/rails/execjs#readme for more supported runtimes

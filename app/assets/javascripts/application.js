@@ -34,5 +34,6 @@ function clearCalendar() {
 
 $(document).on('turbolinks:load', function(){
   eventCalendar();  
+  
 });
 $(document).on('turbolinks:before-cache', clearCalendar);

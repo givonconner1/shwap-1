@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_170328) do
+ActiveRecord::Schema.define(version: 2018_11_29_214007) do
 
   create_table "availabilities", force: :cascade do |t|
     t.datetime "start_time"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_170328) do
     t.datetime "start"
     t.datetime "end"
     t.string "title"
+    t.text "status"
   end
 
   create_table "conversations", force: :cascade do |t|
