@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   resources :events
   devise_for :users
-  resources :availabilities
-   root to: "availabilities#index"
-  
-  get 'layouts/dashboard' 
+  resources :availabilities do
+  resources :requests
+  end
+     get 'pages/dashboard'
+
+
+  root to: "availabilities#index"
+  resources :conversations do
+  resources :messages
+  end
+  get 'layouts/application'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/pages/:page" => "pages#schedules"
   get "/pages/:page" => "pages#shift-exchange"

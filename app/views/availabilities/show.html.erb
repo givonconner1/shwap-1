@@ -1,19 +1,68 @@
+<div class="container">
+  
 <p id="notice"><%= notice %></p>
-
+ <div class="row">
+   <div class="col-md-7">
+       
+      <h1><%= @availability.user.email %>'s Shift Details</h1>
+    <h3>
+      Shift Status: <%= @availability.status %>
+     </h3>
 <p>
   <strong>Start time:</strong>
-  <%= @availability.start_time %>
+  <%= @availability.start_time.strftime("%B %d, %Y, %l:%M %p") %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @availability.end_time %>
+  <%= @availability.end_time.strftime("%B %d, %Y, %l:%M %p") %>
 </p>
 
 <p>
   <strong>Assigned:</strong>
   <%= @availability.assigned %>
 </p>
+              <%= link_to 'Swap this Shift!', new_availability_request_path(@availability), class: 'w3-button w3-round accept-btn' %>
 
-<%= link_to 'Edit', edit_availability_path(@availability) %> |
-<%= link_to 'Back', availabilities_path %>
+
+   </div><!--/col-md-7-->
+   <div class="col-md-5">
+      <h2>
+       <%= @availability.user.email %>'s Active Requests
+      </h2>
+     <% if @request.blank? %>
+          <% @requests.each do |request| %>
+          <table class="table table-striped">
+            <thead>
+              <th>Requested Person</th>
+              <th>Shift Swap Request Details</th>
+              <th>Person who is taking your shift</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <tr>
+              <td>
+               <%= request.user_id %>
+              </td>
+                <td><%= request.comment %></td>
+                <td><%= @availability.title %></td>
+                 <td><%= @availability.status %></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <% end %>
+        <% else %>
+     <h1>
+       You do not have any active shift requests. YOu have to work!
+     </h1>
+    <% end %>
+<br>
+   </div><!--/col-md-5-->
+ <% if current_user.try(:admin) %>
+    <%= link_to 'Change Shift Details', edit_availability_path(@availability), class: 'w3-btn w3-round' %>
+  <% end %>
+
+  
+  </div><!--/row-->
+</div><!--/container-->

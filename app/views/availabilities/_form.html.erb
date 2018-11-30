@@ -1,4 +1,5 @@
-<%= form_with(model: availability, local: true) do |form| %>
+<div class="container">
+  <%= form_with(model: availability, local: true) do |form| %>
   <% if availability.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(availability.errors.count, "error") %> prohibited this availability from being saved:</h2>
@@ -10,10 +11,14 @@
       </ul>
     </div>
   <% end %>
-<div class="field">
-    <%= form.label :test_name %>
-    <%= form.text_area :test_name %>
-  </div>
+<% if current_user.try(:admin) %> <!-- this is for manager to assign the availability to a user-->
+      <%= form.select :title, User.pluck(:email) %>
+<% else %>
+      <%= form.hidden_field :title, value: @availability.user.email %> <!-- this is for user to automatically be assigned to an availbaility.-->
+
+
+<% end %>
+
   <div class="field">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time %>
@@ -23,13 +28,21 @@
     <%= form.label :end_time %>
     <%= form.datetime_select :end_time %>
   </div>
-
+<% if current_user.try(:admin) %>  
   <div class="field">
-    <%= form.label :assigned %>
-    <%= form.check_box :assigned %>
+    <%= form.label :status %>
+    <%= form.select :status, ['Confirmed', 'Pending', 'Not Assigned'] %>
+
   </div>
+<% end %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+<script type="text/javascript">
+  $('.datetimepicker').datetimepicker({
+    format: "YYYY-MM-DD"
+  });
+  </script>

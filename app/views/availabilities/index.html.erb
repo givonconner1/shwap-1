@@ -2,10 +2,35 @@
 <p id="notice"></p>
 <div class="container">
   <div class="w3-row">
-    <div class="w3-col w3-center" style="width: 60%">
-        <div id="calendar" class="calendar-padding"></div>
+    <div class="w3-col" style="width: 60%">
+      <h2 style="margin-top: 5%;"><%= current_user.email %>'s Schedule</h2><br>
+      <div class="meter">
+        <div id="hours-meter" style="height:24px;width:5%">Hours hellllo</div>
       </div>
-    <div class="w3-col w3-right" style="width: 40%; padding: 7.5% 0 0 8%;">
+      <button class="w3-button w3-light-grey" onclick="move()">Click Me</button>
+        <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
+  <%= date.to_formatted_s(:short) %>
+  <% availabilities.each do |availability| %>
+    <% if availability.status == 'Confirmed' %>
+     <%= link_to availability do %>
+
+      <p class = "confirmed">
+        <%= availability.title %><br>
+         <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+      </p>
+      <% end %>
+       <% elsif availability.status == 'Pending' %>
+          <%= link_to availability do %>
+
+          <p class="pending">
+            <%= availability.title %></p>
+       <% end %>
+      <% end %>
+<% end %>
+<% end %>
+      </div>
+    <div class="w3-col w3-right" style="width: 40%; padding: 7.5% 0 0 8%; margin-top: 15%;">
         <div class="w3-card-4" style="height: 15%;">
           <header class="w3-container legend-card">
             <h3 class="w3-center">Legend</h3>
@@ -50,24 +75,43 @@
   <tbody>
     <% @availabilities.each do |availability| %>
       <tr>
-        <td><%= availability.start_time %></td>
-        <td><%= availability.end_time %></td>
+        <td><%= availability.start_time.strftime("%B %d, %Y, %l:%M %p") %></td>
+        <td><%= availability.end_time.strftime("%B %d, %Y, %l:%M %p") %></td>
         <td><%= availability.assigned %></td>
-            <td><%= availability.test_name %></td>
+            <td><%= availability.title %></td>
         <td><%= link_to 'Show', availability %></td>
         <td><%= link_to 'Edit', edit_availability_path(availability) %></td>
         <td><%= link_to 'Destroy', availability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    
     <% end %>
   </tbody>
 </table>
 <br>
 
+
+
 <%= link_to 'New Availability', new_availability_path %>
 <% else %>
 <% end %>
 <script>
+
+function move() {
+    var elem = document.getElementById("hours-meter"); 
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
+  
 $('#calendar').fullCalendar({ 
    events: '/availabilities.json'
+  
 });
 </script>
