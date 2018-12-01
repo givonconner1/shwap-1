@@ -9,61 +9,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <% if user_signed_in? %>
-<div class="container">
-  <div class="w3-bar w3-border main-navbar">
-    <a href="/availabilities" class="w3-bar-item w3-button">Home</a>
-    <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button" %>
-    <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-right" %>
-    <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button">Hello, <%= current_user.email %>!</h1></button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-right">
-        <a href="#" class="w3-bar-item w3-button w3-right">My Profile</a>
-        <a href="/pages/settings" class="w3-bar-item w3-button">Settings</a>
-        <a href="#" class="w3-bar-item w3-button">Privacy</a>
-      </div>
-    </div>
-  </div>
-</div>
-  <% else %>
-   <%= render 'layouts/navbar' %>
-   <%= render partial: 'devise/registrations/new' %>
-   <%= render partial: 'devise/sessions/new' %>
-   <div id="landing-page">
-
-     </div>
-   <div class="w3-container">
-    <div class="w3-display-container" style="height:600px;">
-      <div class="w3-display-bottomleft w3-padding w3-col s9">
-        <div>
-          <h2>Exchange Employee Shifts With Shwap’s Latest <br>Scheduling Tools</h2><br>
-          <ul>
-            <li><p>Create schedules 75% faster</p></li>
-            <li><p>Swap and pick up shifts</p></li>
-            <li><p>Request and approve time off</p></li>
-            <li><p>Stay connected with your employees</p></li>
-          </ul><br>
-        </div>
-        <div>
-          <h2>Help Managers Take Control of Employee<br> Schedules</h2><br>
-          <a href="#" class="w3-block landing-btn w3-padding-large" style="width:50%"><h3>Learn More</h3></a>
-        </div>
-      </div>
-        <div class=" w3-display-bottomright w3-col s3" style="margin-right: 25%;"><%= image_tag("phone-image.png", :class => "promo-img-height")%> </div>
-    </div>
-   </div>
- </div>
-      <% end %>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <%= render partial: 'devise/registrations/new' %>
+    <%= render partial: 'devise/sessions/new' %>
   </body>
 </html>
-
-<script>
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-}
-</script>

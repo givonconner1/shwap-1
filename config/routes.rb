@@ -7,7 +7,7 @@ Rails.application.routes.draw do
      get 'pages/dashboard'
 
 
-  root to: "availabilities#index"
+  root to: "pages#index"
   resources :conversations do
   resources :messages
   end
