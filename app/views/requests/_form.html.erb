@@ -63,7 +63,7 @@ function myFunction() {
 <h4>
   Currently assigned: <%= @availability.title %></h4>
 
-      <%= form.select :user_id, User.pluck(:id) %>
+      <%= form.select :user_id, User.pluck(:email, :id) %>
 
           <%= form.hidden_field :status, value: "Pending" %> <!-- this is for user to automatically be assigned to an availbaility.-->
 
