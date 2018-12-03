@@ -19,17 +19,79 @@
 <br>
 
 
-<div class="ui segment">
-  <h3>All Users</h3>
-  <br>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.email %> | <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+
+<div class="container">
+  <div class="w3-row">
+    <div class="w3-col" style="width: 70%">
+      <h2 style="margin-top: 5%;">Available Staff</h2>
+      <div class="w3-border employee-list">
+        <div class="container">
+        <div class="container w3-padding">
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Employees" title="Type in a name" style="width: 100%;">
+           <ul id="myUL">
+            <li><a href="#">Adele</a></li>
+            <li><a href="#">Agnes</a></li>
+            <li><a href="#">Billy</a></li>
+            <li><a href="#">Bob</a></li>
+            <li><a href="#">Calvin</a></li>
+            <li><a href="#">Christina</a></li>
+            <li><a href="#">Cindy</a></li>
+           </ul>
+        </div>
+        </div>
       </div>
-      <br>
-      <% end %>
-    <% end %>
+    </div>
+     <div class="w3-col" style="width: 30%">
+       <div class="container w3-center" style="margin-top: 25%;">
+        <button class="w3-button w3-round-large accept-btn">Select Shift(s)</button>
+       </div>
+     </div>
   </div>
 </div>
+
+
+
+
+<div class="w3-row">
+  <div class="w3-col" style="width: 70%;">
+    <h2 style="margin-top: 5%;">Available Staff</h2>
+    <div class="w3-border employee-list">
+      <div class="container">
+      <div class="container w3-padding">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Employees" title="Type in a name" style="width: 100%;">
+        <% @users.each do |user| %>
+          <% if user.id != current_user.id %>
+            <ul id="myUL">
+              <li><%= link_to ("Message " + user.email), conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %></li>
+            </ul>
+          <% end %>
+        <% end %>  
+      </div>           
+      </div>    
+    </div>   
+  </div>
+</div>
+
+  <h3>All Users</h3>
+  <br>
+  <div id="myInput">
+
+  </div>
+</div>
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
