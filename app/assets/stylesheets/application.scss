@@ -11,8 +11,9 @@
   padding: 10px;
 }
 .not-assigned {
-   background: red;
+  background: red;
   padding: 10px;
+  color: #fff;
 }
 #landing-page {
   background: rgb(39,206,147);
@@ -25,6 +26,26 @@
   color: white;
 }
 
+.logo-title {
+/* Shwap */
+
+  height: 66px;
+  left: 93px;
+  top: 27px;
+  overflow: visible;
+  font-family: Sarina;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 36px;
+
+  color: #FFFFFF;
+
+}
+
+.swap-logo {
+  height: 25px;
+}
 .main-navbar {
   color: #fff !important;
   background-color: #929292 !important;
@@ -47,6 +68,7 @@
 .accept-btn {
   background-color: #32CB97 !important;
   color: #ffff !important;
+  border-color: none !important;
 }
 
 .decline-btn {
@@ -66,7 +88,7 @@
 }
 
 .accept-btn::hover {
-
+  background-color: #5ddaaf !important;
 }
 
 .decline-btn:hover {
@@ -90,6 +112,47 @@
 
 .calendar-padding {
   padding: 5% 0 5% 0;
+}
+
+.simple-calendar {
+
+    grid-auto-rows: 100px;
+    text-align: right;
+  
+  th {
+    grid-auto-rows: 50px;
+    align-items: center;
+    text-align: center;
+  }
+  .day {
+    border-right: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    padding: 16px;
+    width: 20%;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background-color: rgba(226, 224, 115, 0.66); 
+   
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
 }
 
 .legend-card {
@@ -699,6 +762,9 @@ a {
   width: 600px;
 }
 
+.modal-footer {
+  display: grid !important;
+}
 .w3-bar {
   width: 100%;
   overflow: hidden;
