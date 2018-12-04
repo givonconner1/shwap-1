@@ -4,6 +4,9 @@
     <a href="/availabilities" class="w3-bar-item w3-button">Home</a>
     <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button" %>
     <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
+    <% if current_user.try(:admin) %>
+      <%= link_to "Pending Requests", pages_pending_path, class:'w3-bar-item w3-button' %>
+    <% end %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-right" %>
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button">Hello, <%= current_user.email %>!</h1></button>
@@ -29,4 +32,3 @@
    </div>
 </div>
 <% end %>
-<%= yield %>

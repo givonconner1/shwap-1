@@ -11,7 +11,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render 'layouts/navbar' %>
+        <%= render 'layouts/navbar' %>
+
+
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <ul>
+            <li>
+              <%= value %>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+      <%= yield %>
     <%= render partial: 'devise/registrations/new' %>
     <%= render partial: 'devise/sessions/new' %>
   </body>

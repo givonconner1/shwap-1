@@ -5,4 +5,8 @@ class PagesController < ApplicationController
   def schedules
     render template: "pages/#{params[:page]}"
   end
+  
+  def pending
+    @availabilities = Availability.where('status=? OR status=?', 'Pending', 'Confirmed Swap')
+  end
 end

@@ -1,4 +1,4 @@
 class Request < ApplicationRecord
   belongs_to :availability
-  has_many :users
+  belongs_to :user
 end

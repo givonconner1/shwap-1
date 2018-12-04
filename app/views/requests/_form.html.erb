@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- 
   <div class="w3-row">
     <div class="w3-col" style="width: 70%">
       <h2 style="margin-top: 5%;">Available Staff</h2>
@@ -24,7 +25,43 @@
         <button class="w3-button w3-round-large accept-btn">Select Shift(s)</button>
        </div>
      </div>
+  </div> -->
+  <%= form_for [@availability, @request] do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<h4>
+  Currently assigned: <%= @availability.title %></h4>
+  <br>
+      <h5>
+        Who do you want to take this shift? <%= form.select :user_id, User.pluck(:email, :id) %>
+  </h5>
+
+          <%= form.hidden_field :status, value: "Pending" %> <!-- this is for user to automatically be assigned to an availbaility.-->
+
+
+
+  <div class="field">
+    <%= form.label :comment, "Why are you requesting this shift off?" %>
+    <%= form.text_area :comment, class: 'form-control' %>
   </div>
+<br>
+  <div class="actions">
+    <%= form.submit "Request Shift Swap", class: 'w3-btn btn btn-round w3-green' %>
+  </div>
+<% end %>
+  
 </div>
 
 <script>
@@ -45,36 +82,4 @@ function myFunction() {
 }
 </script>
 
-<%= form_for [@availability, @request] do |form| %>
-  <% if request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
 
-      <ul>
-      <% request.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-
-<h4>
-  Currently assigned: <%= @availability.title %></h4>
-
-      <%= form.select :user_id, User.pluck(:email, :id) %>
-
-          <%= form.hidden_field :status, value: "Pending" %> <!-- this is for user to automatically be assigned to an availbaility.-->
-
-
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

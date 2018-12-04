@@ -1,7 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1><%= current_user.email %>'s Availabilities</h1>
-        <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
+<h1><%= current_user.email %>'s Shifts</h1>
+
+ <%= link_to 'Add a Shift', new_availability_path, class: 'btn w3-btn w3-green' %>
+
+
+ <div id="Menu1">  <%= week_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
     <% if availability.status == 'Confirmed' %>
@@ -28,6 +33,38 @@
       <% end %>
 <% end %>
 <% end %>
+</div>
+  <div id="Menu2" style="display: none;">
+  <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
+  <%= date.to_formatted_s(:short) %>
+  <% availabilities.each do |availability| %>
+    <% if availability.status == 'Confirmed' %>
+          <%= link_to availability do %>
+            <p class = "confirmed">
+              <%= availability.title %></p>
+           <% end %>
+       <% elsif availability.status == 'Pending' %>
+          <%= link_to availability do %>
+
+
+          <p class="pending">
+            <%= availability.title %>
+          </p>
+        <% end %>
+        <% else %>
+          <%= link_to availability do %>
+
+
+          <p class="not-assigned">
+            <%= availability.title %>
+        </p>
+        <% end %>
+      <% end %>
+<% end %>
+<% end %>
+
+</div>
+      
 
 
 <table>
@@ -57,9 +94,6 @@
 
 <br>
 
-<%= link_to 'New Availability', new_availability_path %>
-<script>
-$('#calendar').fullCalendar({ 
-   events: '/availabilities.json'
-});
-</script>
+</div>
+
+

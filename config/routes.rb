@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :requests
   end
      get 'pages/dashboard'
-
+  get "pages/pending"
 
   root to: "pages#index"
   resources :conversations do
@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#messages"
   get "/pages/:page" => "pages#new-staff"
   get "/pages/:page" => "pages#schedules"
+  
+
 end

@@ -1,6 +1,6 @@
 class AvailabilitiesController < ApplicationController
   before_action :set_availability, only: [:show, :edit, :update, :destroy]
-
+   before_action :user_is_current_user, only: [:show, :edit, :update, :destroy]
   # GET /availabilities
   # GET /availabilities.json
   def index
@@ -69,6 +69,12 @@ class AvailabilitiesController < ApplicationController
     def set_availability
       @availability = Availability.find(params[:id])
     end
+    def user_is_current_user
+      unless current_user == @availability.user or current_user.admin
+        redirect_to(availabilities_url, alert: "You cannot edit view this") and return
+      end
+    end
+     
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params

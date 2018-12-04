@@ -11,7 +11,7 @@
         <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
-    <% if availability.status == 'Confirmed' %>
+    <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>
      <%= link_to availability do %>
 
       <p class = "confirmed">

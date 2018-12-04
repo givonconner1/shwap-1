@@ -18,12 +18,13 @@
   <%= @availability.end_time.strftime("%B %d, %Y, %l:%M %p") %>
 </p>
 
-<p>
-  <strong>Assigned:</strong>
-  <%= @availability.assigned %>
-</p>
-              <%= link_to 'Swap this Shift!', new_availability_request_path(@availability), class: 'w3-button w3-round accept-btn' %>
 
+          <% unless current_user.try(:admin) %>
+              <%= link_to 'Swap this Shift!', new_availability_request_path(@availability), class: 'w3-button w3-round accept-btn' %>
+          <% else %>
+         <%= link_to 'Change Shift Details', edit_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
+
+          <% end %>
 
    </div><!--/col-md-7-->
    <div class="col-md-5">
@@ -43,11 +44,21 @@
               <tr>
               <td>
              
-               <%= request.user_id %>
+               <%= request.user.email %>
               </td>
                 <td><%= request.comment %></td>
+               <% if @availability.status == 'Confirmed Swap' %>
                 <td><%= @availability.title %></td>
-                 <td><%= @availability.status %></td>
+                <td><%= @availability.status %></td>
+
+
+                <% else %>
+                <td>Pending Manager Approval</td>
+                <td>Pending Manager Approval</td>
+
+
+                <% end %>
+                
               </tr>
             </tbody>
           </table>
@@ -60,9 +71,6 @@
     <% end %>
 <br>
    </div><!--/col-md-5-->
- <% if current_user.try(:admin) %>
-    <%= link_to 'Change Shift Details', edit_availability_path(@availability), class: 'w3-btn w3-round' %>
-  <% end %>
 
   
   </div><!--/row-->
