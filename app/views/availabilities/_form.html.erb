@@ -12,16 +12,11 @@
     </div>
   <% end %>
 <% if current_user.try(:admin) %> <!-- this is for manager to assign the availability to a user-->
-      <h3>
-        Assigned Employee: <%= form.select :title, User.pluck(:email) %>
-  </h3>
-  <div class="field">
-    
-    <h3>
-      Change Shift Status: <%= form.select :status, ['Confirmed Swap','Assigned', 'Pending'] %>
-    </h3>
+      <p>
+        Current Assigned: <%= @availability.user.email %>
+  </p>
+  <p>Requested Employee: <%= @availability.title %></p>
 
-  </div>
 <% else %>
       <%= form.hidden_field :title, value: @availability.user.email %> <!-- this is for user to automatically be assigned to an availbaility.-->
 

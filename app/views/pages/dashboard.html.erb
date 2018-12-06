@@ -1,7 +1,7 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-<h1><%= current_user.email %>'s Shifts</h1>
+<h1><%= current_user.email %>'s Dashboard</h1>
 
  <%= link_to 'Add a Shift', new_availability_path, class: 'btn w3-btn w3-green' %>
 
@@ -9,17 +9,21 @@
  <div id="Menu1">  <%= week_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
-    <% if availability.status == 'Confirmed' %>
+    <% if availability.status == 'Assigned' or 'Confirmed Swap' %>
           <%= link_to availability do %>
             <p class = "confirmed">
-              <%= availability.title %></p>
+                          <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+</p>
            <% end %>
        <% elsif availability.status == 'Pending' %>
           <%= link_to availability do %>
 
 
           <p class="pending">
-            <%= availability.title %>
+                        <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+
           </p>
         <% end %>
         <% else %>
@@ -27,7 +31,9 @@
 
 
           <p class="not-assigned">
-            <%= availability.title %>
+                        <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+
         </p>
         <% end %>
       <% end %>
@@ -38,17 +44,23 @@
   <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
-    <% if availability.status == 'Confirmed' %>
+    <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>
           <%= link_to availability do %>
             <p class = "confirmed">
-              <%= availability.title %></p>
+             
+             <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+
            <% end %>
        <% elsif availability.status == 'Pending' %>
           <%= link_to availability do %>
-
+        
 
           <p class="pending">
-            <%= availability.title %>
+            <br>
+            <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+
           </p>
         <% end %>
         <% else %>
@@ -56,7 +68,9 @@
 
 
           <p class="not-assigned">
-            <%= availability.title %>
+             <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+
+
         </p>
         <% end %>
       <% end %>
@@ -67,30 +81,7 @@
       
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Assigned</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-
-  <tbody>
-    <% @availabilities.each do |availability| %>
-      <tr>
-        <td><%= availability.start_time %></td>
-        <td><%= availability.end_time %></td>
-        <td><%= availability.assigned %></td>
-        <td><%= link_to 'Show', availability %></td>
-        <td><%= link_to 'Edit', edit_availability_path(availability) %></td>
-        <td><%= link_to 'Destroy', availability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 
