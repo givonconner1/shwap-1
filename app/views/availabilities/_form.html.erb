@@ -18,13 +18,12 @@
   <div class="field">
     
     <h3>
-      Change Shift Status: <%= form.select :status, ['Confirmed Swap','Assigned', 'Pending', 'Not Assigned'] %>
+      Change Shift Status: <%= form.select :status, ['Confirmed Swap','Assigned', 'Pending'] %>
     </h3>
 
   </div>
 <% else %>
       <%= form.hidden_field :title, value: @availability.user.email %> <!-- this is for user to automatically be assigned to an availbaility.-->
-
 
 <% end %>
 <br>

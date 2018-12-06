@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
-    availabilities_path
+    if current_user.admin?
+      pages_pending_path
+    else
+    pages_dashboard_path
+    end
   end
   
   protected

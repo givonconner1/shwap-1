@@ -28,7 +28,7 @@ class AvailabilitiesController < ApplicationController
   def create
     @availability = Availability.new(availability_params)
     @availability.user_id = current_user.id
-    
+    @availability.status = 'Pending'
     respond_to do |format|
       if @availability.save
         format.html { redirect_to @availability, notice: 'Availability was successfully created.' }
