@@ -1,9 +1,11 @@
 <% if user_signed_in? %>
 <div class="container">
   <div class="w3-bar w3-border main-navbar">
-    <a href="/availabilities" class="w3-bar-item w3-button">Home</a>
+     <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
     <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button" %>
-    <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
+        <a href="/availabilities" class="w3-bar-item w3-button">Calendar</a>
+
+
     <% if current_user.try(:admin) %>
       <%= link_to "Pending Requests", pages_pending_path, class:'w3-bar-item w3-button' %>
     <% end %>

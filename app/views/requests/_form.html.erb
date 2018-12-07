@@ -48,7 +48,6 @@
         Who do you want to take this shift? <%= form.select :user_id, User.pluck(:email, :id) %>
   </h5>
 
-          <%= form.hidden_field :status, value: "Pending" %> <!-- this is for user to automatically be assigned to an availbaility.-->
 
 
 

@@ -4,7 +4,7 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th>Currently Assigned:</th>
+      <th>Original Person</th>
       <th>Requested Taker of Shift:</th>
       <th>Start time</th>
       <th>End time</th>
@@ -16,7 +16,7 @@
   <tbody>
     <% @availabilities.each do |availability| %>
       <tr>
-         <td><%= availability.title %></td>
+         <td><%= availability.user.email %></td>
         <% for @request in availability.requests %>
         <td><%= @request.user.email %></td>
         <% end %>

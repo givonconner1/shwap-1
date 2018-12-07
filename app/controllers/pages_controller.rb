@@ -7,6 +7,6 @@ class PagesController < ApplicationController
   end
   
   def pending
-    @availabilities = Availability.where('status=? OR status=?', 'Pending', 'Confirmed Swap')
+    @availabilities = Availability.where('status=? OR status=?', 'Pending Swap', 'Confirmed Swap')
   end
 end

@@ -21,6 +21,7 @@ class AvailabilitiesController < ApplicationController
 
   # GET /availabilities/1/edit
   def edit
+    
   end
 
   # POST /availabilities
@@ -28,7 +29,7 @@ class AvailabilitiesController < ApplicationController
   def create
     @availability = Availability.new(availability_params)
     @availability.user_id = current_user.id
-    
+    @availability.status = 'Pending'
     respond_to do |format|
       if @availability.save
         format.html { redirect_to @availability, notice: 'Availability was successfully created.' }
@@ -43,6 +44,12 @@ class AvailabilitiesController < ApplicationController
   # PATCH/PUT /availabilities/1
   # PATCH/PUT /availabilities/1.json
   def update
+    if current_user.admin?
+      @availability.update(:status => "Confirmed Swap")
+      if @availability.title?
+        @availability.user.update(:email => @availability.title)
+      end 
+    end
     respond_to do |format|
       if @availability.update(availability_params)
         format.html { redirect_to @availability, notice: 'Availability was successfully updated.' }
