@@ -1,6 +1,88 @@
 <div class="container">
   
 <p id="notice"><%= notice %></p>
+ <div class="container">
+  
+<p id="notice"><%= notice %></p>
+  <div class="modal fade" id="swapModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Would you like to exchange your shift on <%= @availability.start_time.strftime("%B %d, %Y") %> from <%= @availability.start_time.strftime("%l:%M %p") %> - <%= @availability.end_time.strftime("%l:%M %p") %>?</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+        </div>
+        <div class="modal-body log-form">    
+          <div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "show-shift") do |f| %>
+              <div class="wrap">
+                <%= f.submit "Submit", class: 'btn accept-btn w3-center modal-footer w3' %>
+                <button type="button" class="close decline-btn w3-round w3-center modal-footer" data-dismiss="modal">Cancel</button>
+              </div>   
+            <% end %>
+          </div>
+         </div>
+        </div>
+    </div>
+</div>
+   <div class="col-md-5">
+      <h2>
+       <%= @availability.user.email %>'s Active Requests
+      </h2>
+     <% if @request.blank? %>
+          <% @requests.each do |request| %>
+          <table class="table table-striped">
+            <thead>
+              <th>Requested Person</th>
+              <th>Shift Swap Request Details</th>
+              <th>Person who is taking your shift</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <tr>
+              <td>
+             
+               <%= request.user.email %>
+              </td>
+                <td><%= request.comment %></td>
+               <% if @availability.status == 'Confirmed Swap' %>
+                <td><%= @availability.title %></td>
+                <td><%= @availability.status %></td>
+
+
+                <% else %>
+                <td>Pending Manager Approval</td>
+                <td>Pending Manager Approval</td>
+
+
+                <% end %>
+                
+              </tr>
+            </tbody>
+          </table>
+          
+          <% end %>
+        <% else %>
+     <h1>
+       You do not have any active shift requests. YOu have to work!
+     </h1>
+    <% end %>
+<br>
+   </div><!--/col-md-5-->
+
+  
+  </div><!--/row-->
+</div><!--/container-->
+  
+  
+  
+  
+  
+  
+  
+  
+  
  <div class="row">
    <div class="col-md-7">
        
