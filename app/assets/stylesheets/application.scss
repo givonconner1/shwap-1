@@ -110,49 +110,112 @@
   border: 1px solid white !important;
 }
 
+.panel-left {
+    width: 300px;
+    height: 100%;
+    border-radius: 20px 0px 0px 20px;
+    background-color: #2ECC71;
+    bottom: 500px;
+    color: white;
+}
 .calendar-padding {
   padding: 5% 0 5% 0;
 }
 
-.simple-calendar {
+.calendar-heading {
+  background-color: white;
+  color: black !important;
+}
 
-    grid-auto-rows: 100px;
-    text-align: right;
+.noborders td {
+  border: 0 !important;
+}
+
+
+.simple-calendar {
   
   th {
     grid-auto-rows: 50px;
     align-items: center;
     text-align: center;
+    color: #AAAAAA;
+    position: relative;
+    font-size: 18px;
+    word-spacing: 35px;
+    font-weight: 600;
   }
+  
   .day {
     border-right: 1px solid #e1e1e1;
     border-top: 1px solid #e1e1e1;
     padding: 16px;
-    width: 20%;
   }
 
-  .wday-0 {}
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
+  .wday-0 {
+    grid-auto-rows: 100px;
+    text-align: right;
+  }
+  .wday-1 {
+    grid-auto-rows: 100px;
+    text-align: right;  
+  }
+  
+  .wday-2 {
+    grid-auto-rows: 100px;
+    text-align: right; 
+  }
+  
+  .wday-3 {
+    grid-auto-rows: 100px;
+    text-align: right;
+  }
+  
+  .wday-4 {
+    grid-auto-rows: 100px;
+    text-align: right;
+  }
+  
+  .wday-5 {
+    grid-auto-rows: 100px;
+    text-align: right;    
+  }
+  
+  .wday-6 {
+    grid-auto-rows: 100px;
+    text-align: right;    
+  }
 
   .today {
     background-color: rgba(226, 224, 115, 0.66); 
    
   }
-  .past {}
-  .future {}
+  .past {
+  }
+  
+  .future {
+    
+  }
 
-  .start-date {}
+  .start-date {
+    
+  }
 
-  .prev-month {}
-  .next-month { }
-  .current-month {}
+  .prev-month {
+    background-color: #fff;
+    font-size: 0;
+  }
+  .next-month {
+    
+  }
+  
+  .current-month {
+    
+  }
 
-  .has-events {}
+  .has-events {
+    
+  }
+  
 }
 
 .legend-card {
