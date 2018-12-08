@@ -2,19 +2,61 @@
 @import "fullcalendar";
 @import 'bootstrap-datetimepicker';
 @import 'simple_calendar';
+
+
+
+.shift-card-margin {
+  margin-top: 5px;
+}
 .confirmed {
-  background: green;
-  padding: 10px;
+  width: 135px;
+  height: 45.75px;
+  background: #E5E5E5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  font-size: 10px;
+  padding-left: 15px;
+  text-align: left;
 }
+
+.confirmed a {
+  margin-top: 5px;
+}
+#confirmed-tag {
+  height: 45.75px;
+  width: 10px;
+  background: #32CB97;
+  -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  position: absolute;
+}
+
 .pending {
-  background: yellow;
-  padding: 10px;
+  width: 135px;
+  height: 45.75px;
+  background: #E5E5E5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  font-size: 10px;
+  padding-left: 15px;
+  text-align: left;
 }
+
+#pending-tag {
+  height: 45.75px;
+  width: 10px;
+  background: #FFDD86;
+  -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  position: absolute;
+}
+
 .not-assigned {
   background: red;
   padding: 10px;
   color: #fff;
 }
+
 #landing-page {
   background: rgb(39,206,147);
   background: -moz-linear-gradient(180deg, rgba(39,206,147,1) 0%, rgba(0,135,119,1) 100%);

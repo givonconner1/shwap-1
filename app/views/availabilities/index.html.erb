@@ -48,19 +48,20 @@
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
     <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>
+      <div id="confirmed-tag"></div>
      <%= link_to availability do %>
-
-      <p class = "confirmed">
+      <div class="confirmed">
         <%= availability.title %><br>
          <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
-
-      </p>
+      </div>
       <% end %>
        <% elsif availability.status == 'Pending' %>
           <%= link_to availability do %>
 
           <p class="pending">
-            <%= availability.title %></p>
+            <div id="confirmed-tag"></div>
+            <%= availability.title(class: 'shift-card-margin') %></p>
+            <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
        <% end %>
       <% end %>
 <% end %>
