@@ -33,34 +33,28 @@
         </div>
     </div>
     -->
-       <div class="w3-col w3-left panel-left" style="width: 20%; padding: 0 8% 0 0%; margin-top: 15%;">
-        <div>
-          <h3>Today is:</h3>
-        </div><br>
-    </div>
-    <div class="w3-col" style="width: 80%">
+    <div class="w3-col" style="width: 100%">
       <h2 style="margin-top: 5%;">Everyone's Schedule</h2><br>
       <div class="meter">
         <div id="hours-meter" style="height:24px;width:5%">Hours hellllo</div>
       </div>
       <button class="w3-button w3-light-grey" onclick="move()">Click Me</button>
         <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
-  <%= date.to_formatted_s(:short) %>
+  <%= date.to_formatted_s(:day_of_month) %>
   <% availabilities.each do |availability| %>
-    <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>
-      <div id="confirmed-tag"></div>
+    <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>     
      <%= link_to availability do %>
+      <div id="confirmed-tag"></div>
       <div class="confirmed">
         <%= availability.title %><br>
          <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
       </div>
       <% end %>
-       <% elsif availability.status == 'Pending' %>
-          <%= link_to availability do %>
-
-          <p class="pending">
-            <div id="confirmed-tag"></div>
-            <%= availability.title(class: 'shift-card-margin') %></p>
+       <% elsif availability.status == 'Pending' %>   
+        <%= link_to availability do %>
+      <div id="pending-tag"></div>
+          <div class="pending">
+            <%= availability.title %></p>
             <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
        <% end %>
       <% end %>

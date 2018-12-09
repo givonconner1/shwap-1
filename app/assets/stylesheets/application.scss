@@ -17,11 +17,10 @@
   font-size: 10px;
   padding-left: 15px;
   text-align: left;
+  padding-top: 10px;
+  position: absolute;
 }
 
-.confirmed a {
-  margin-top: 5px;
-}
 #confirmed-tag {
   height: 45.75px;
   width: 10px;
@@ -29,6 +28,7 @@
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
   transform: matrix(-1, 0, 0, 1, 0, 0);
   position: absolute;
+  z-index: 1;
 }
 
 .pending {
@@ -45,10 +45,11 @@
 #pending-tag {
   height: 45.75px;
   width: 10px;
-  background: #FFDD86;
+  background: #f3eb04;
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
   transform: matrix(-1, 0, 0, 1, 0, 0);
   position: absolute;
+  z-index: 1;
 }
 
 .not-assigned {
@@ -190,41 +191,35 @@
   .day {
     border-right: 1px solid #e1e1e1;
     border-top: 1px solid #e1e1e1;
-    padding: 16px;
+    padding-bottom: 75px;
+    padding-right: 55px;
   }
 
   .wday-0 {
-    grid-auto-rows: 100px;
-    text-align: right;
+
   }
   .wday-1 {
-    grid-auto-rows: 100px;
-    text-align: right;  
+  
   }
   
   .wday-2 {
-    grid-auto-rows: 100px;
-    text-align: right; 
+
   }
   
   .wday-3 {
-    grid-auto-rows: 100px;
-    text-align: right;
+
   }
   
   .wday-4 {
-    grid-auto-rows: 100px;
-    text-align: right;
+
   }
   
   .wday-5 {
-    grid-auto-rows: 100px;
-    text-align: right;    
+  
   }
   
   .wday-6 {
-    grid-auto-rows: 100px;
-    text-align: right;    
+   
   }
 
   .today {
@@ -380,6 +375,7 @@ audio:not([controls]) {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  font-family: 'ProzaLibreLight'; 
 }
 
 a:active,a:hover {
@@ -584,7 +580,7 @@ img {
 
 a {
   color: inherit;
-  font-family: 'Proza Libre';
+  font-family: 'ProzaLibreRegular'; 
 }
 
 .w3-table,.w3-table-all {
