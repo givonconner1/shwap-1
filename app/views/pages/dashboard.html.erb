@@ -11,20 +11,21 @@
   <% availabilities.each do |availability| %>
     <% if availability.status == 'Assigned' or 'Confirmed Swap' %>
           <%= link_to availability do %>
-            <p class = "confirmed">
-                          <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+            <div id="confirmed-tag"></div>
+            <div class="confirmed" style="font-size: 16px; text-align: center; padding-left: 5px;">
+                          <%= availability.start_time.strftime("%l:%M %p")%> - <%= availability.end_time.strftime("%l:%M %p") %>
 
-</p>
+            </div>
            <% end %>
        <% elsif availability.status == 'Pending' %>
           <%= link_to availability do %>
 
-
-          <p class="pending">
+          <div class="pending-tag"></div>
+          <div class="pending">
                         <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
 
 
-          </p>
+          </div>
         <% end %>
         <% else %>
           <%= link_to availability do %>

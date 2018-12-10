@@ -39,15 +39,15 @@
         <div id="hours-meter" style="height:24px;width:5%">Hours hellllo</div>
       </div>
       <button class="w3-button w3-light-grey" onclick="move()">Click Me</button>
-        <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
-  <%= date.to_formatted_s(:day_of_month) %>
+<%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
+  <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
     <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>     
      <%= link_to availability do %>
       <div id="confirmed-tag"></div>
       <div class="confirmed">
-        <%= availability.title %><br>
-         <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+        <%= availability.user.email %><br>
+        <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
       </div>
       <% end %>
        <% elsif availability.status == 'Pending' %>   

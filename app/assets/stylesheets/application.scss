@@ -9,20 +9,21 @@
   margin-top: 5px;
 }
 .confirmed {
-  width: 135px;
-  height: 45.75px;
+  width: 143px;
+  height: 50.75px;
   background: #E5E5E5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  font-size: 10px;
+  font-size: 13px;
   padding-left: 15px;
   text-align: left;
-  padding-top: 10px;
+  padding-top: 8px;
   position: absolute;
+  font-family: 'Share';
 }
 
 #confirmed-tag {
-  height: 45.75px;
+  height: 50.75px;
   width: 10px;
   background: #32CB97;
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
@@ -32,18 +33,21 @@
 }
 
 .pending {
-  width: 135px;
-  height: 45.75px;
+  width: 143px;
+  height: 50.75px;
   background: #E5E5E5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  font-size: 10px;
+  font-size: 13px;
   padding-left: 15px;
   text-align: left;
+  padding-top: 8px;
+  position: absolute;
+  font-family: 'Share';
 }
 
 #pending-tag {
-  height: 45.75px;
+  height: 50.75px;
   width: 10px;
   background: #f3eb04;
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
@@ -174,6 +178,9 @@
   border: 0 !important;
 }
 
+.noborders th {
+  border: 0 !important;
+}
 
 .simple-calendar {
   
@@ -181,18 +188,20 @@
     grid-auto-rows: 50px;
     align-items: center;
     text-align: center;
-    color: #AAAAAA;
+    background-color: #A1A1A1;
+    color: #fff;
     position: relative;
-    font-size: 18px;
-    word-spacing: 35px;
-    font-weight: 600;
+    font-family: 'Arvo', serif;
+    font-weight: 200;
+    
   }
   
   .day {
     border-right: 1px solid #e1e1e1;
     border-top: 1px solid #e1e1e1;
     padding-bottom: 75px;
-    padding-right: 55px;
+    grid-auto-rows: 100px;
+    text-align: right;
   }
 
   .wday-0 {
@@ -239,10 +248,10 @@
 
   .prev-month {
     background-color: #fff;
-    font-size: 0;
+    color: #a5a5a5;
   }
   .next-month {
-    
+    border: 0 !important;
   }
   
   .current-month {

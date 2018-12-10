@@ -1,1 +1,0 @@
-Time::DATE_FORMATS[:day_of_month] = "%e"

@@ -6,8 +6,8 @@
   </div>
 
   <table class="table">
-    <thead>
-      <tr class="noborder">
+    <thead class="noborders">
+      <tr>
         <% date_range.slice(0, 7).each do |day| %>
           <th><%= t('date.abbr_day_names')[day.wday] %></th>
         <% end %>
