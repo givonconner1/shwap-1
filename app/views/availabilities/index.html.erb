@@ -34,11 +34,7 @@
     </div>
     -->
     <div class="w3-col" style="width: 100%">
-      <h2 style="margin-top: 5%;">Everyone's Schedule</h2><br>
-      <div class="meter">
-        <div id="hours-meter" style="height:24px;width:5%">Hours hellllo</div>
-      </div>
-      <button class="w3-button w3-light-grey" onclick="move()">Click Me</button>
+      <h2 style="margin-top: 5%;">TECM Lab Shifts</h2><br>
 <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
@@ -46,7 +42,7 @@
      <%= link_to availability do %>
       <div id="confirmed-tag"></div>
       <div class="confirmed">
-        <%= availability.user.email %><br>
+        <%= availability.title %><br>
         <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
       </div>
       <% end %>
@@ -63,38 +59,6 @@
       </div>
   </div>
 </div>
-<h1>Availabilities</h1>
-  <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @availabilities.each do |availability| %>
-      <tr>
-        <td><%= availability.start_time.strftime("%B %d, %Y, %l:%M %p") %></td>
-        <td><%= availability.end_time.strftime("%B %d, %Y, %l:%M %p") %></td>
-        <td><%= availability.status %></td>
-            <td><%= availability.title %></td>
-        <td><%= link_to 'Show', availability %></td>
-        <td><%= link_to 'Edit', edit_availability_path(availability) %></td>
-        <td><%= link_to 'Destroy', availability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    
-    <% end %>
-  </tbody>
-</table>
-<br>
-
-
-
-<%= link_to 'New Availability', new_availability_path %>
-<% else %>
 <% end %>
 <script>
 

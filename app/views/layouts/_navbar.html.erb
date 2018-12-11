@@ -1,21 +1,21 @@
 <% if user_signed_in? %>
 <div class="container">
-  <div class="w3-bar w3-border main-navbar">
+  <div class="w3-bar w3-border main-navbar w3-mobile">
      <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
     <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button" %>
-        <a href="/availabilities" class="w3-bar-item w3-button">Calendar</a>
+        <a href="/availabilities" class="w3-bar-item w3-button w3-mobile">Calendar</a>
 
 
     <% if current_user.try(:admin) %>
       <%= link_to "Pending Requests", pages_pending_path, class:'w3-bar-item w3-button' %>
     <% end %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-right" %>
-    <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button">Hello, <%= current_user.email %>!</h1></button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-right">
-        <a href="#" class="w3-bar-item w3-button w3-right">My Profile</a>
-        <a href="/pages/settings" class="w3-bar-item w3-button">Settings</a>
-        <a href="#" class="w3-bar-item w3-button">Privacy</a>
+    <div class="w3-dropdown-hover w3-right w3-mobile">
+      <button class="w3-button w3-mobile">Hello, <%= current_user.email %>!</h1></button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-right w3-mobile">
+        <a href="#" class="w3-bar-item w3-button w3-right w3-mobile">My Profile</a>
+        <a href="/pages/settings" class="w3-bar-item w3-button w3-mobile">Settings</a>
+        <a href="#" class="w3-bar-item w3-button w3-mobile">Privacy</a>
       </div>
     </div>
   </div>
@@ -23,14 +23,14 @@
 <% else %>
 <div class="row landing-nav">
    <div class="w3-col s9">
-     <a href="/" class="w3-bar-item w3-button nav-padding-left logo-title" style="font-size: 36px;">Shwap</a>
-     <a href="#" class="w3-bar-item w3-button nav-padding-left">Contact</a>
-     <a href="#" class="w3-bar-item w3-button nav-padding-left">About</a>
-     <a href="#" class="w3-bar-item w3-button nav-padding-left">Our Partners</a>
+     <a href="/" class="w3-bar-item w3-button nav-padding-left logo-title w3-mobile" style="font-size: 36px;">Shwap</a>
+     <a href="#" class="w3-bar-item w3-button nav-padding-left w3-mobile">Contact</a>
+     <a href="#" class="w3-bar-item w3-button nav-padding-left w3-mobile">About</a>
+     <a href="#" class="w3-bar-item w3-button nav-padding-left w3-mobile">Our Partners</a>
    </div>
    <div class="w3-col s3">
-     <a data-toggle="modal" data-target="#logInModal" class="w3-bar-item w3-button w3-left nav-padding-right ">Login</a> 
-     <a data-toggle="modal" data-target="#signUpModal" class="w3-bar-item w3-button w3-left nav-padding-right get-started">Sign Up</a> 
+     <a data-toggle="modal" data-target="#logInModal" class="w3-bar-item w3-button w3-left nav-padding-right w3-mobile">Login</a> 
+     <a data-toggle="modal" data-target="#signUpModal" class="w3-bar-item w3-button w3-left nav-padding-right get-started w3-mobile">Sign Up</a> 
    </div>
 </div>
 <% end %>
