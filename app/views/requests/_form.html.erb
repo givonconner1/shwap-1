@@ -1,31 +1,4 @@
 <div class="container">
-  <!-- 
-  <div class="w3-row">
-    <div class="w3-col" style="width: 70%">
-      <h2 style="margin-top: 5%;">Available Staff</h2>
-      <div class="w3-border employee-list">
-        <div class="container">
-        <div class="container w3-padding">
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Employees" title="Type in a name" style="width: 100%;">
-           <ul id="myUL">
-            <li><a href="#">Adele</a></li>
-            <li><a href="#">Agnes</a></li>
-            <li><a href="#">Billy</a></li>
-            <li><a href="#">Bob</a></li>
-            <li><a href="#">Calvin</a></li>
-            <li><a href="#">Christina</a></li>
-            <li><a href="#">Cindy</a></li>
-           </ul>
-        </div>
-        </div>
-      </div>
-    </div>
-     <div class="w3-col" style="width: 30%">
-       <div class="container w3-center" style="margin-top: 25%;">
-        <button class="w3-button w3-round-large accept-btn">Select Shift(s)</button>
-       </div>
-     </div>
-  </div> -->
   <%= form_for [@availability, @request] do |form| %>
   <% if request.errors.any? %>
     <div id="error_explanation">
@@ -38,19 +11,12 @@
       </ul>
     </div>
   <% end %>
-
-
-
 <h4>
   Currently assigned: <%= @availability.title %></h4>
   <br>
       <h5>
         Who do you want to take this shift? <%= form.select :user_id, User.pluck(:email, :id) %>
   </h5>
-
-
-
-
   <div class="field">
     <%= form.label :comment, "Why are you requesting this shift off?" %>
     <%= form.text_area :comment, class: 'form-control' %>

@@ -1,9 +1,7 @@
+<html>
+<body>
 <div class="container">
-  
-<p id="notice"><%= notice %></p>
- <div class="container">
-  
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
   <div class="modal fade" id="swapModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -27,12 +25,12 @@
     </div>
 </div>
    <div class="col-md-5">
-      <h2>
+      <h2 class="w3-center">
        <%= @availability.user.email %>'s Active Requests
       </h2>
      <% if @request.blank? %>
           <% @requests.each do |request| %>
-          <table class="table table-striped">
+          <table class="table table-striped" style="background-color: #fff !important;">
             <thead>
               <th>Requested Person</th>
               <th>Shift Swap Request Details</th>
@@ -42,7 +40,6 @@
             <tbody>
               <tr>
               <td>
-             
                <%= request.user.email %>
               </td>
                 <td><%= request.comment %></td>
@@ -71,36 +68,23 @@
 <br>
    </div><!--/col-md-5-->
 
-  
-  </div><!--/row-->
 </div><!--/container-->
-  
-  
-  
-  
-  
-  
-  
-  
-  
- <div class="row">
-   <div class="col-md-7">
-       
-      <h1><%= @availability.user.email %>'s Shift Details</h1>
+ 
+<div class="row">
+  <div class="col-md-7">
+    <h1><%= @availability.user.email %>'s Shift Details</h1>
     <h3>
       Shift Status: <%= @availability.status %>
-     </h3>
-<p>
-  <strong>Start time:</strong>
-  <%= @availability.start_time.strftime("%B %d, %Y, %l:%M %p") %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @availability.end_time.strftime("%B %d, %Y, %l:%M %p") %>
-</p>
-
-
+    </h3>
+    <p>
+      <strong>Start time:</strong>
+      <%= @availability.start_time.strftime("%B %d, %Y, %l:%M %p") %>
+    </p>
+    <p>
+      <strong>End time:</strong>
+      <%= @availability.end_time.strftime("%B %d, %Y, %l:%M %p") %>
+    </p>
+    
           <% unless current_user.try(:admin) %>
               <%= link_to 'Swap this Shift!', new_availability_request_path(@availability), class: 'w3-button w3-round accept-btn' %>
           <% else %>
@@ -109,51 +93,6 @@
           <% end %>
 
    </div><!--/col-md-7-->
-   <div class="col-md-5">
-      <h2>
-       <%= @availability.user.email %>'s Active Requests
-      </h2>
-     <% if @request.blank? %>
-          <% @requests.each do |request| %>
-          <table class="table table-striped">
-            <thead>
-              <th>Requested Person</th>
-              <th>Shift Swap Request Details</th>
-              <th>Person who is taking your shift</th>
-              <th>Status</th>
-            </thead>
-            <tbody>
-              <tr>
-              <td>
-             
-               <%= request.user.email %>
-              </td>
-                <td><%= request.comment %></td>
-               <% if @availability.status == 'Confirmed Swap' %>
-                <td><%= @availability.title %></td>
-                <td><%= @availability.status %></td>
-
-
-                <% else %>
-                <td>Pending Manager Approval</td>
-                <td>Pending Manager Approval</td>
-
-
-                <% end %>
-                
-              </tr>
-            </tbody>
-          </table>
-          
-          <% end %>
-        <% else %>
-     <h1>
-       You do not have any active shift requests. YOu have to work!
-     </h1>
-    <% end %>
-<br>
-   </div><!--/col-md-5-->
-
-  
-  </div><!--/row-->
-</div><!--/container-->
+</div>
+</body>
+</html>

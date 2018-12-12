@@ -1,3 +1,5 @@
+<html>
+<body style="height: auto;">
 <% if user_signed_in? %>
 <p id="notice"></p>
 <div class="container">
@@ -34,11 +36,11 @@
     </div>
     -->
     <div class="w3-col" style="width: 100%">
-      <h2>TECM Lab Shifts</h2><br>
+      <div style="padding: 0px 50px 0px 50px;"><h2 class="w3-center small-border-bottom">TECM LAB SHIFTS</h2><br></div>
 <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
-    <% if availability.status == 'Confirmed' or 'Confirmed Swap' %>     
+    <% if availability.status == 'Confirmed' or availability.status == 'Confirmed Swap' %>     
      <%= link_to availability do %>
       <div id="confirmed-tag"></div>
       <div class="confirmed">
@@ -50,16 +52,17 @@
         <%= link_to availability do %>
       <div id="pending-tag"></div>
           <div class="pending">
-            <%= availability.title %></p>
+            <%= availability.title %><br>
             <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+          </div>
        <% end %>
-      <% end %>
+      <% end %>  
 <% end %>
 <% end %>
-      </div>
-  </div>
 </div>
 <% end %>
+</body>
+</html>
 <script>
 
 function move() {

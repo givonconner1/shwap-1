@@ -15,7 +15,6 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
-    @request.user.email = ""
   end
 
   # GET /requests/1/edit
@@ -29,7 +28,8 @@ class RequestsController < ApplicationController
     @request.availability_id = @availability.id
 		@availability.update(:status => "Pending Swap")
 		@availability.update(:title => @request.user.email)
-	
+    @request.user.email = ''
+    
     respond_to do |format|
       if @request.save
         format.html { redirect_to @availability, notice: 'Request was successfully created.' }
@@ -64,7 +64,7 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request

@@ -1,45 +1,27 @@
 <div class="ui segment conversation-page">
-  <h3>Mailbox</h3>
 
-  <div class="ui list">
-    <div class="item conversation-page">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender_id == current_user.id %><br>
-          <% recipient = User.find(conversation.recipient_id) %> 
-        <% else %>
-          <% recipient = User.find(conversation.sender_id) %> 
-        <% end %>
-          <%= link_to recipient.email, conversation_messages_path(conversation)%> 
-        <% end %>
-      <% end %>
+<div class="w3-container">
+  <div class="w3-row container">
+    <div class="w3-col">
+      <h2 class="w3-center">MESSAGING</h2>
+      <div class="employee-list" id="style-1">
+        <div class="container">
+        <div class="container w3-padding">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Employees" title="Type in a name" style="width: 100%;">
+           <ul id="myUL">
+          <% @users.each do |user| %>
+            <% if user.id != current_user.id %>
+
+                <li><%= link_to (user.email), conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %></li>
+            <% end %>
+          <% end %>  
+          </ul>
+        </div>           
+        </div>    
+      </div>   
     </div>
   </div>
 </div>
-<br>
-
-<div class="w3-row">
-  <div class="w3-col" style="width: 70%;">
-    <h2 style="margin-top: 5%;">Available Staff</h2>
-    <div class="w3-border employee-list">
-      <div class="container">
-      <div class="container w3-padding">
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Employees" title="Type in a name" style="width: 100%;">
-         <ul id="myUL">
-        <% @users.each do |user| %>
-          <% if user.id != current_user.id %>
-           
-              <li><%= link_to (user.email), conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %></li>
-          <% end %>
-        <% end %>  
-        </ul>
-
-      </div>           
-      </div>    
-    </div>   
-  </div>
-</div>
-
 
 </div>
 <script>

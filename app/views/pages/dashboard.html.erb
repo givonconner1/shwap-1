@@ -1,90 +1,38 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-
-<h1><%= current_user.email %>'s Dashboard</h1>
-
- <%= link_to 'Add a Shift', new_availability_path, class: 'btn w3-btn w3-green' %>
-
-
- <div id="Menu1">  <%= week_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities, number_of_weeks: 2) do |date, availabilities| %>
-  <%= date.to_formatted_s(:short) %>
-  <% availabilities.each do |availability| %>
-    <% if availability.status == 'Assigned'%>
-          <%= link_to availability do %>
-            <div id="confirmed-tag"></div>
-            <div class="confirmed" style="font-size: 16px; text-align: center; padding-left: 5px;">
-                          <%= availability.start_time.strftime("%l:%M %p")%> - <%= availability.end_time.strftime("%l:%M %p") %>
-
-            </div>
-           <% end %>
-       <% elsif availability.status == 'Pending' %>
-          <%= link_to availability do %>
-
-          <div id="pending-tag"></div>
-          <div class="pending">
-                        <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
-
-
-          </div>
+  <h1><%= current_user.email %>'s Dashboard</h1>
+     <% unless current_user.try(:admin) %>
+    <%= link_to 'Add Availability', new_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
+   <% else %>
+    <%= link_to 'Add Shift', new_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
+   <% end %>
+   <div id="Menu1">  <%= week_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities, number_of_weeks: 2) do |date, availabilities| %>
+    <%= date.to_formatted_s(:short) %>
+    <% availabilities.each do |availability| %>
+      <% if availability.status == 'Confirmed' %>     
+       <%= link_to availability do %>
+        <div id="confirmed-tag"></div>
+        <div class="confirmed">
+          <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+        </div>
         <% end %>
-        <% else %>
+         <% elsif availability.status == 'Pending' %>   
           <%= link_to availability do %>
-
-
-          <p class="not-assigned">
-                        <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
-
-
-        </p>
-        <% end %>
-      <% end %>
-<% end %>
-<% end %>
-</div>
-  <div id="Menu2" style="display: none;">
-  <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
-  <%= date.to_formatted_s(:short) %>
-  <% availabilities.each do |availability| %>
-    <% if availability.status == 'Confirmed'%>
-          <%= link_to availability do %>
-            <div id="confirmed-tag"></div>
-            <div class="confirmed" style="font-size: 16px; text-align: center; padding-left: 5px;">
+            <div id="pending-tag"></div>
+            <div class="pending">
               <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
             </div>
-           <% end %>
-       <% elsif availability.status == 'Pending' %>
+          <% end %>
+        <% elsif availability.status == 'Available' %>   
           <%= link_to availability do %>
-        
-          <div id="pending-tag"></div>
-          <div class="pending">
-            <br>
-            <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
-
-
-          </p>
-        <% end %>
-        <% else %>
-          <%= link_to availability do %>
-
-
-          <p class="not-assigned">
-             <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
-
-
-        </p>
-        <% end %>
-      <% end %>
-<% end %>
-<% end %>
-
-</div>
-      
-
-
-
-
-<br>
-
+            <div class="available">
+              <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
+            </div>
+          <% end %>
+         <% end %>
+       <% end %>
+     <% end %>
+   </div>
 </div>
 
 

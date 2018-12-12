@@ -29,7 +29,7 @@ class AvailabilitiesController < ApplicationController
   def create
     @availability = Availability.new(availability_params)
     @availability.user_id = current_user.id
-    @availability.status = 'Pending'
+    @availability.status = 'Available'
     @availability.title = current_user.email
     respond_to do |format|
       if @availability.save
@@ -46,7 +46,7 @@ class AvailabilitiesController < ApplicationController
   # PATCH/PUT /availabilities/1.json
   def update
     if current_user.admin?
-      @availability.update(:status => "Confirmed Swap")
+      @availability.update(:status => "Confirmed")
       if @availability.title?
         @availability.user.update(:email => @availability.title)
       end 
