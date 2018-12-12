@@ -34,7 +34,7 @@
     </div>
     -->
     <div class="w3-col" style="width: 100%">
-      <h2 style="margin-top: 5%;">TECM Lab Shifts</h2><br>
+      <h2>TECM Lab Shifts</h2><br>
 <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>

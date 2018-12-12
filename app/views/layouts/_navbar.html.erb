@@ -1,21 +1,22 @@
 <% if user_signed_in? %>
-<div class="container">
-  <div class="w3-bar w3-border main-navbar w3-mobile">
-     <%= link_to "My Shifts", pages_dashboard_path,  class: "w3-bar-item w3-button" %>
-    <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button" %>
-        <a href="/availabilities" class="w3-bar-item w3-button w3-mobile">Calendar</a>
-
-
-    <% if current_user.try(:admin) %>
-      <%= link_to "Pending Requests", pages_pending_path, class:'w3-bar-item w3-button' %>
-    <% end %>
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-right" %>
-    <div class="w3-dropdown-hover w3-right w3-mobile">
-      <button class="w3-button w3-mobile">Hello, <%= current_user.email %>!</h1></button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-right w3-mobile">
-        <a href="#" class="w3-bar-item w3-button w3-right w3-mobile">My Profile</a>
-        <a href="/pages/settings" class="w3-bar-item w3-button w3-mobile">Settings</a>
-        <a href="#" class="w3-bar-item w3-button w3-mobile">Privacy</a>
+  <div class="row landing-nav-dashboard">
+    <div class="w3-col" style="width: 55%;">
+        <%= link_to "My Shift", pages_dashboard_path,  class: "w3-bar-item w3-button nav-padding-left-small w3-mobile" %>
+        <%= link_to "Messages", conversations_path, class: "w3-bar-item w3-button nav-padding-left-small w3-mobile" %>
+        <a href="/availabilities" class="w3-bar-item w3-button w3-mobile nav-padding-left-small">Calendar</a>
+      <% if current_user.try(:admin) %>
+        <%= link_to "Pending Requests", pages_pending_path, class:'w3-bar-item w3-button w3-mobile nav-padding-left-small' %>
+      <% end %>
+    </div>
+    <div class="w3-col" style="width: 45%;">
+      <div class="w3-dropdown-hover no-background w3-text-white w3-right w3-mobile">
+        <div class="w3-left nav-padding-left w3-mobile bold-text menu-show"><p>Hello, <%= current_user.email %>!</p></button></i>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4" style="font-size: 16px;">
+          <a href="#" class="w3-bar-item w3-button w3-right w3-mobile">My Profile</a>
+          <a href="/pages/settings" class="w3-bar-item w3-button w3-mobile">Settings</a>
+          <a href="#" class="w3-bar-item w3-button w3-mobile">Privacy</a>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button w3-mobile" %>
+        </div>
       </div>
     </div>
   </div>
@@ -31,6 +32,5 @@
    <div class="w3-col s3">
      <a data-toggle="modal" data-target="#logInModal" class="w3-bar-item w3-button w3-left nav-padding-right w3-mobile">Login</a> 
      <a data-toggle="modal" data-target="#signUpModal" class="w3-bar-item w3-button w3-left nav-padding-right get-started w3-mobile">Sign Up</a> 
-   </div>
-</div>
+    </div>
 <% end %>
