@@ -1,5 +1,4 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<div class="container">
   <%= form_with(model: availability, local: true) do |form| %>
   <% if availability.errors.any? %>
     <div id="error_explanation">
@@ -12,37 +11,38 @@
       </ul>
     </div>
   <% end %>
-<% if current_user.try(:admin) %> <!-- this is for manager to assign the availability to a user-->
-      <p>
-        Current Assigned: <%= @availability.user.email %>
-  </p>
-  <p>Requested Employee: <%= @availability.title %></p>
+      <div class="w3-card-4" style="width: 90%; text-align: left;">
+        <header class="w3-container details-heading">
+          <% if current_user.try(:admin) %> <!-- this is for manager to assign the availability to a user-->
+                <p class="white">
+                  Current Assigned: <%= @availability.user.email %>
+            </p>
+            <p class="white">Requested Employee: <%= @availability.title %></p>
+          <% else %>
+                <%= form.hidden_field :title, value: @availability.user.email, style: "display: hidden" %> <!-- this is for user to automatically be assigned to an availbaility.-->
+          <% end %>      
+        </header>
+      <div class="w3-container" style="padding-top: 3%;">
+        <div class="field white">
+          <%= form.label :start_time %>
+          <%= form.datetime_select :start_time %>
+        </div>
 
-<% else %>
-      <%= form.hidden_field :title, value: @availability.user.email %> <!-- this is for user to automatically be assigned to an availbaility.-->
-
-<% end %>
-  
+        <div class="field white">
+          <%= form.label :end_time %>
+          <%= form.datetime_select :end_time %>
+        </div>
+      </div>
+        <footer class="w3-container" style="padding-bottom: 10px;">
+        </footer>
+      </div>
 <br>
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
-  </div>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time %>
-  </div>
-
- <style>
-  flatpickr("#flatpickr", {}); 
- </style>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', :class => 'w3-btn w3-round accept-btn' %>
   </div>
 <% end %>
-</div>
 <script type="text/javascript">
   $('.datetimepicker').datetimepicker({
     format: "YYYY-MM-DD"

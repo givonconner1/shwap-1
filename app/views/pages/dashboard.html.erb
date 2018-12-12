@@ -1,15 +1,13 @@
-<div class="container">
+<div class="container" style="padding-top: 5%;">
   <p id="notice"><%= notice %></p>
-  <h1><%= current_user.email %>'s Dashboard</h1>
-     <% unless current_user.try(:admin) %>
-    <%= link_to 'Add Availability', new_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
-   <% else %>
-    <%= link_to 'Add Shift', new_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
-   <% end %>
+  <div style="padding: 0 15% 0 15%;">
+    <h2 class="w3-center page-title small-border-bottom"><%= current_user.email %>'s Dashboard</h2><br>
+  </div>
+   <%= link_to 'Update Availability', new_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
    <div id="Menu1">  <%= week_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities, number_of_weeks: 2) do |date, availabilities| %>
     <%= date.to_formatted_s(:short) %>
     <% availabilities.each do |availability| %>
-      <% if availability.status == 'Confirmed' %>     
+      <% if availability.status == 'Confirmed' or availability.status == 'Confirmed Swap' %>     
        <%= link_to availability do %>
         <div id="confirmed-tag"></div>
         <div class="confirmed">
@@ -26,6 +24,7 @@
         <% elsif availability.status == 'Available' %>   
           <%= link_to availability do %>
             <div class="available">
+              AVAILABLE<br>
               <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
             </div>
           <% end %>

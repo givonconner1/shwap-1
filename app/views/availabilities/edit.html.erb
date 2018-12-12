@@ -1,8 +1,8 @@
-<div class="container">
-  <h1>Editing Your Shift</h1>
-
+<div class="container" style="padding-top: 5%;">
+  <div style="padding: 0 25% 0 25%;">
+    <h2 class="w3-center small-border-bottom">EDIT SHIFT</h2><br>
+  </div>
 <%= render 'form', availability: @availability %>
 
-<%= link_to 'Show', @availability %> |
-<%= link_to 'Back', availabilities_path %>
+<%= link_to 'Back', availabilities_path, :class => "w3-btn w3-round decline-btn", :style => "margin-top: 1%;" %>
 </div>

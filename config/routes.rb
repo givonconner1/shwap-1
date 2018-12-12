@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#messages"
   get "/pages/:page" => "pages#new-staff"
   get "/pages/:page" => "pages#schedules"
+  get "/pages/:page" => "pages#about"
   
 
 end

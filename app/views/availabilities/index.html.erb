@@ -2,7 +2,7 @@
 <body style="height: auto;">
 <% if user_signed_in? %>
 <p id="notice"></p>
-<div class="container">
+<div class="container" style="padding-top: 5%;">
   <div class="w3-row">
   <!--
       <div class="w3-col w3-left" style="width: 40%; padding: 0 8% 0 0%; margin-top: 15%;">
@@ -36,7 +36,7 @@
     </div>
     -->
     <div class="w3-col" style="width: 100%">
-      <div style="padding: 0px 50px 0px 50px;"><h2 class="w3-center small-border-bottom">TECM LAB SHIFTS</h2><br></div>
+      <div style="padding: 0px 25% 0px 25%;"><h2 class="w3-center small-border-bottom">TECM LAB SHIFTS</h2><br></div>
 <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities) do |date, availabilities| %>
   <%= date.to_formatted_s(:short) %>
   <% availabilities.each do |availability| %>
