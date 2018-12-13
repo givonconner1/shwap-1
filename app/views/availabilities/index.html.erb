@@ -48,7 +48,7 @@
         <%= availability.start_time.strftime("%l:%M %p") %> - <%= availability.end_time.strftime("%l:%M %p") %>
       </div>
       <% end %>
-       <% elsif availability.status == 'Pending' %>   
+       <% elsif availability.status == 'Pending' or availability.status == 'Pending Swap' %>   
         <%= link_to availability do %>
       <div id="pending-tag"></div>
           <div class="pending">
