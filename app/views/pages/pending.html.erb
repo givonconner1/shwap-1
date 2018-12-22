@@ -27,7 +27,7 @@
             <% end %>
             <td><%= availability.start_time.strftime("%B %d, %Y, %l:%M %p") %></td>
             <td><%= availability.end_time.strftime("%B %d, %Y, %l:%M %p") %></td>
-            <% if availability.status == "Pending" %>
+            <% if availability.status == "Pending" or availability.status == "Pending Swap" %>
               <td style="background-color: #ffa5008c"><%= availability.status %></td>
             <% elsif availability.status == "Confirmed" or availability.status == "Confirmed Swap" %>
               <td style="background-color: #00800052"><%= availability.status %></td>
@@ -45,9 +45,9 @@
   <thead>
     <tr>
       <th>Employee</th>
+      <th>Start Time</th>
       <th>End time</th>
-      <th>Assigned</th>
-      <th colspan="3"></th>
+      <th colspan="3" class="w3-center">Manage</th>
     </tr>
   </thead>
 

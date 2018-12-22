@@ -4,7 +4,7 @@
   </div>
    <%= link_to 'Update Availability', new_availability_path(@availability), class: 'w3-button w3-round accept-btn' %>
    <button onclick="myFunction()" id="Availability-btn" class="w3-button w3-round accept-btn">Schedule</button>
-   <button onclick="myFunction()" id="Schedule-btn" class="w3-button w3-round accept-btn">Availability</button>
+   <button onclick="myFunction()" id="Schedule-btn" class="w3-button w3-round accept-btn" style="display: none;">Availability</button>
    <div id="Menu1" class="w3-animate-zoom">  <%= week_calendar(attribute: :start_time, end_attribute: :end_time, events: @availabilities, number_of_weeks: 2) do |date, availabilities| %>
     <%= date.to_formatted_s(:short) %>
     <% availabilities.each do |availability| %>
@@ -47,16 +47,17 @@ function myFunction() {
   var menu2 = document.getElementById("Menu2");
   var btn1 = document.getElementById("Schedule-btn");
   var btn2 = document.getElementById("Availability-btn");
+
   if (menu1.style.display === "none") {
     menu1.style.display = "block";
     menu2.style.display = "none";
-    btn1.style.display = "inline";
-    btn2.style.display = "none";
+    btn1.style.display = "none";
+    btn2.style.display = "inline";
   } else {
     menu1.style.display = "none";
     menu2.style.display = "block";
-    btn1.style.display = "none";
-    btn2.style.display = "inline";
+    btn1.style.display = "inline";
+    btn2.style.display = "none";
   }
 }
 </script>
