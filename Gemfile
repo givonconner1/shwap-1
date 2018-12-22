@@ -15,14 +15,13 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 
-gem 'bootstrap', '~> 4.1.3'
-
 gem 'jquery-rails'
+gem 'bootstrap-sass'
 
 gem 'fullcalendar-rails'
 
-gem 'momentjs-rails'
-gem 'bootstrap-datetimepicker-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem "simple_calendar", "~> 2.0"
 
 

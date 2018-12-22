@@ -1,6 +1,7 @@
-@import "bootstrap";
-@import "fullcalendar";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'bootstrap-datetimepicker';
+@import "fullcalendar";
 @import 'simple_calendar';
 
 
@@ -164,6 +165,9 @@
   padding-top: 7%;
 }
 
+#Menu2 {
+  display: none;
+}
 .logo-title {
 /* Shwap */
 
@@ -500,6 +504,7 @@ div#myInput {
 div.employee-list {
   height: 400px;
   overflow-y: auto;
+  overflow-x: hidden;
   border: solid 1px rgba(255,255,255,0.1);
 }
 
